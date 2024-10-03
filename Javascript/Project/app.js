@@ -1,3 +1,7 @@
+//Variable global precio
+let costoBase = 10.99 //USD
+
+
 //Funciones
 function validarEdad(edad) {
     //Funcion que compara lo ingresado en edad en base a si es Nan 
@@ -17,19 +21,22 @@ function validarCadenaSoloTexto(texto) {
     if (!resultado) {
         console.log(`Pais ${texto} ingresado correctamente.`)
     }
-    return !resultado
+    return !resultado 
     
 }
 
 function regresarCarrera(numero){
     if (numero === 1) {
-        console.log('Cursa HTML, CSS, JS Y VUE')
+        costoBase *= 1.10
+        console.log(`Cursa HTML, CSS, JS Y VUE con costo de: ${costoBase}`)
         return true
     } else if (numero === 2){
-        console.log('Cursa SQL, JS, PYTHON, NODE')
+        costoBase *= 1.15
+        console.log(`Cursa SQL, PYTHON y NODE con costo de: ${costoBase}`)
         return true
     } else if (numero === 3){
-        console.log('Cursa SQL, PYTHON, MATEMATICAS')
+        costoBase *= 1.20
+        console.log(`Cursa SQL, PYTHON y MATEMATICAS con costo de: ${costoBase}`)
         return true
     } 
     return false
@@ -63,5 +70,6 @@ while (!carrera) {
 
 
 
-//Fase final, se muestran datos en consola
+//Fase final, se muestran datos en consola y en un alert
+alert(`Datos finales: ${nombre.toUpperCase()} de ${edad} años de edad y costo de ruta final de ${costoBase}`)
 alert('Gracias por elegirnos!')
