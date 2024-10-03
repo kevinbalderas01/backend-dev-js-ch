@@ -63,5 +63,5 @@ while (!carrera) {
 
 
 
-//Fase final, mostramos datos
+//Fase final, se muestran datos en consola
 alert('Gracias por elegirnos!')

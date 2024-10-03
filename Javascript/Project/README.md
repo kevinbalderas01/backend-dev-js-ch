@@ -2,13 +2,13 @@
 
 ## Primera Fase
 
-En esta fase inicial, se utilizan variables, funciones, expresiones regulares para validar entrada por medio de promps y mostrar resultados en consola. A continuación, la pantalla inicial:
+En esta fase inicial, se utilizan variables, funciones, expresiones regulares para validar entrada por medio de prompts y mostrar resultados en consola. A continuación, la pantalla inicial:
 ![Pantalla inicial](./img/1.png)
 
 Pedimos datos como nombre, para este dato no validamos.
 ![Pidiendo nombre](./img/2.png)
 
-Luego pedimos dato de edad, para lo cual validamos con simplemente viendo si es NaN luego de convertilo a número el string ingresado.
+Luego pedimos dato de edad, para lo cual validamos simplemente viendo si es NaN luego de convertilo a número el string ingresado.
 ![Pidiendo edad](./img/3.png)
 
 Luego pedimos el dato de país de origen, donde igual validamos con una expresion regular sencilla.
