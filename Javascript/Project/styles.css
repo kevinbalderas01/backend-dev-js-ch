@@ -1,0 +1,13 @@
+h1 {
+    color: blueviolet;
+    text-align: center;
+}
+
+.container-costofinal {
+    display: flex;
+    margin-left: 40px;
+}
+
+#costoFinalLabel {
+    margin-left: 40px;
+}   
