@@ -1,6 +1,77 @@
+body{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(94,9,121,1) 35%, rgba(0,212,255,1) 100%);
+}
+
+input[type="text"] , input[type="number"], select{
+    width: 100%;
+    padding: 13px 20px;
+    margin: 10px 0px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1.08rem;
+}
+
+input#email.invalid, input#edad.invalid , input#nombre.invalid, input#pais.invalid{
+    border-color: #900;
+    background-color: #fdd;
+  }
+
+label {
+    font-size: 1.5rem;
+}
+
+input[type="submit"] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+input[type="submit"]:disabled , input[type="submit"]:disabled:hover {
+    width: 100%;
+    background-color: #a0c1a1;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: auto;
+    font-size: 1rem;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+  }
+
+.container-form{
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #f2f2f7;
+    width: 44rem;
+}
+
 h1 {
-    color: blueviolet;
+    color: rgb(187, 170, 202);
     text-align: center;
+    font-size: 3rem;
+
+}
+
+.container-principal{
+    display: flex;
+}
+
+
+
+.mostrar-citas{
+    margin-left: 1rem;
+    padding-top: 0rem;    
 }
 
 .container-costofinal {
@@ -11,3 +82,30 @@ h1 {
 #costoFinalLabel {
     margin-left: 40px;
 }   
+
+#resultados_citas{
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 30rem; 
+}
+/* Para el estilo de fuente de google.fonts*/
+.itim-regular {
+    font-family: "Itim", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/*Para quitar flechas por defecto en campo numérico*/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+  
+
