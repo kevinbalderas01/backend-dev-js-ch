@@ -1,0 +1,23 @@
+{
+  "name": "servidor_1",
+  "version": "1.0.0",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./app.js",
+    "dev":"nodemon ./app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "stop_linux": "killall -9 node",
+    "stop_windows": "taskkill /F /IM node.exe"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  },
+  "dependencies": {
+    "moment": "^2.30.1"
+  }
+}
