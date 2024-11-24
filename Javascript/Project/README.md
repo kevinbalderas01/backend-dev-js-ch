@@ -1,9 +1,9 @@
 # Projecto JavaScript - 60000
 
-## Tercera Fase
+## Projecto Final
 
 ### Descripción
-En esta tercera fase se continuo con el desarrollo del proyecto de un sitio web
+En esta última fase se continuo con el desarrollo del proyecto de un sitio web
 para el pedido de diferentes cursos/rutas de diferentes clientes. Básicamente
 un cliente puede hacer una compra ingresando datos como nombre, correo, 
 edad, país y selección de una ruta. A continuación se muestra la primera
@@ -28,6 +28,16 @@ Al dar click en *Editar* vemos que se cargan los datos del pedido gracias a un I
 
 Al dar click nuevamente en *Guardar*, se actualizan los datos de ese ID único como se muestra en consola el arreglo que contiene dicho pedido actualizado, se actualiza también en Local Storage.
 ![Exito 5](./img/final_8.png)
+
+Se agregaron alertas con la libreria *swing* para cuando se añaden nuevos pedidos , se editan o se eliminan, con una función específica que utiliza diferentes parámetros y cambia tanto el símbolo como el texto de la acción
+![Alerta 1](./img/final_9.png)
+![Alerta 2](./img/final_10.png)
+
+Por último, para la parte del consumo de API, se copió el contenido de un archivo externo con regiones del mundo JSON, lo anterior debido a que aunque era una URL pública, no permitía consumo de terceros y marcaba errores de CORS, entonces decidí sólo copiar el contenido, verificando fuera de dominio público el contenido y guardarlo como JSON para luego consumirlo con un fetch
+JSON consumido  |  Función que genera la Promise
+:-------------------------:|:-------------------------:
+![](./img/final_11.png)  |![](./img/final_12.png)
+
 
 ### Estructura Proyecto
 Ahora en esta sección se darán detalles sobre la refactorización necesaria para el proyecto, ya que teniendo todo en un mismo archivo hacía todo muy pesado y poco escalable para el futuro.Primero del lado izquiero se muestra la organización en archivos de js y del lado derecho el archivo de selectores.js, que son los encargados de la interacción con los input en el DOM.

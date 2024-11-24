@@ -1,9 +1,10 @@
 import { generarId } from "./funciones.js"
 import { AdminPedidos } from "./classes/Pedidos.js"
-import { email } from "./selectores.js"
 
 const costoBase = 19.99 //USD
 const carrerasDisponibles = ['FrontEnd ', 'BackEnd', 'Data Science'] 
+const regionesDisponibles = [ "Africa", "Antarctic", "Asia", "Central America" ]
+
 
 
 let editando = {
@@ -17,7 +18,8 @@ const pedidoCurso = {
   edad : '',
   pais : '',
   carrera : '',
-  costoFinal : 0
+  costoFinal : 0,
+  region: ''
 }
 
 //Expresiones Regulares para validación
@@ -31,6 +33,7 @@ const pedidos_ = new AdminPedidos()
 export {
     costoBase,
     carrerasDisponibles,
+    regionesDisponibles,
     editando,
     pedidoCurso,
     emailRegExp,

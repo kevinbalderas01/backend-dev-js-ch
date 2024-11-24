@@ -8,6 +8,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TusCarreras</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link id="favicon"  rel="icon"  href="./img/icon.png"  type="image/png"  sizes="16*16">
 </head>
 <body>
     <h1 class="itim-regular">Bienvenido a TusCarreras!</h1>
@@ -33,6 +35,10 @@
                     <option value="1">BackEnd</option>
                     <option value="2">Data Science</option>
                 </select>
+
+                <label class="itim-regular" for="region"> Región</label>
+                <select class="itim-regular" name="regionName" id="regionName"> 
+                </select>
     
                 <input id="btn" class="itim-regular" type="submit" value="Comprar" disabled>
             </form>
@@ -46,6 +52,5 @@
     </div>
     
     <script src="./js/app2.js" type="module"></script>
-    
 </body>
 </html>

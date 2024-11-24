@@ -1,9 +1,49 @@
-import { carrerasDisponibles, pedidoCurso, costoBase , editando, pedidos_} from "./variables.js";
-import { form } from "./selectores.js";
-import { nombreCompleto, email, pais, edad, carrera , btnAgregar, selectOption} from "./selectores.js";
+import { carrerasDisponibles, pedidoCurso, costoBase , editando, pedidos_, regionesDisponibles} from "./variables.js";
+import { form, region } from "./selectores.js";
+import { nombreCompleto, email, pais, edad, carrera , btnAgregar, selectOption, selectRegion} from "./selectores.js";
+
+
+function fromSettoHTML(set) {
+  const setArray = Array.from(set);  
+  let html = ''  
+  for (let index = 0; index < setArray.length; index++) {
+    const element = setArray[index];
+    if (index === 0) {
+      html += "<option value=''>" + 'Selecciona una región' + "</option>"
+    }
+    html += "<option value=" + index  + ">" +element + "</option>"
+    
+  }
+  const regionName = document.getElementById('regionName')
+  regionName.innerHTML = html
+
+  
+}
+
+export  function  getAPICountry() {
+  const setRegion = new Set();
+  fetch('./js/countries.json')
+    .then( (resp) => resp.json())
+    .then( (data) => {
+      const arrayObject =Object.values(data.data) 
+      arrayObject.forEach((item)=>{
+        setRegion.add(item.region)
+      })
+      fromSettoHTML(setRegion)
+    })
+    
+}
+
+
+export function arrojarAlerta(title, text, status) {
+  Swal.fire({
+    title: title,
+    text: text,
+    icon: status
+  });
+}
 
 export function sincronizarStorage() {
-    console.log(pedidos_.pedidos)
     localStorage.setItem('pedidos', JSON.stringify(pedidos_.pedidos))
 }
 
@@ -37,6 +77,11 @@ export function regresarCarrera(numero){
     } 
 }
 
+export function regresarRegion(numero){
+  pedidoCurso.region = regionesDisponibles[numero]
+  console.log(pedidoCurso);
+}
+
 export function handleSubmit(event) {
     event.preventDefault();
     if (editando.value) {
@@ -53,7 +98,7 @@ export function handleSubmit(event) {
 }
 
 export function checkButtonDisabled(e) {
-    if (nombreCompleto.classList.contains('valid') && email.classList.contains('valid') && pais.classList.contains('valid') && edad.classList.contains('valid') && carrera.value !== '') {
+    if (nombreCompleto.classList.contains('valid') && email.classList.contains('valid') && pais.classList.contains('valid') && edad.classList.contains('valid') && carrera.value !== '' && region.value !== '') {
       btnAgregar.disabled = false
     } else {
       btnAgregar.disabled = true
@@ -68,6 +113,7 @@ export function handleEdit(pedido) {
   pais.value = pedido.pais
   edad.value = pedido.edad
   selectOption.value = String(carrerasDisponibles.indexOf(pedido.carrera))
+  selectRegion.value = String(regionesDisponibles.indexOf(pedido.region))
   email.value = pedido.email
 
   editando.value = true
@@ -87,7 +133,8 @@ export function reiniciarObjetoPedido(){
       edad : '',
       pais : '',
       carrera : '',
-      costoFinal : 0
+      costoFinal : 0,
+      region:''
   })
 }
 

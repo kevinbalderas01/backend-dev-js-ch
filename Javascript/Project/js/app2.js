@@ -1,10 +1,11 @@
-import { nombreCompleto, pais, edad, carrera, email, form } from "./selectores.js"
-import { handleDato, regresarCarrera, handleSubmit, checkButtonDisabled } from "./funciones.js"
+import { nombreCompleto, pais, edad, carrera, email, form , region } from "./selectores.js"
+import { handleDato, regresarCarrera, handleSubmit, checkButtonDisabled, getAPICountry, regresarRegion } from "./funciones.js"
 import { letrasRegExp, numeroRegExp, emailRegExp, pedidos_ } from "./variables.js"
 
 //Event Listeners
 document.addEventListener('DOMContentLoaded', ()=>{
   pedidos_.pedidos = JSON.parse(localStorage.getItem('pedidos')) || []
+  getAPICountry()
   pedidos_.mostrar()
 })
 
@@ -23,6 +24,12 @@ email.addEventListener('input', (event) =>{
 carrera.addEventListener('input', (event) =>{
   //Actualizamos precio
   regresarCarrera(Number(event.target.value))
+})
+
+region.addEventListener('input', (event) =>{
+  //Actualizamos region
+  regresarRegion(Number(event.target.value))
+  
 })
 
 form.addEventListener('change', checkButtonDisabled)

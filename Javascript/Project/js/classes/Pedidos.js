@@ -1,5 +1,5 @@
 import { container_citas } from "../selectores.js"
-import { sincronizarStorage, handleEdit } from "../funciones.js"
+import { sincronizarStorage, handleEdit, arrojarAlerta } from "../funciones.js"
 
 //Conjunto de pedidos como Clase
 export class AdminPedidos{
@@ -8,16 +8,19 @@ export class AdminPedidos{
     }
     agregar(pedido){
       this.pedidos = [...this.pedidos, pedido]
+      arrojarAlerta('Gracias!','Pedido realizado correctamente!','success')
       this.mostrar()
     }
   
     eliminar(id){
       this.pedidos = this.pedidos.filter(pedido => pedido.id !== id) //Filter genera nuevo array
+      arrojarAlerta('Lo sentimos!','Registro eliminado correctamente','warning')
       this.mostrar()
     }
   
     editar(pedidoAct){
       this.pedidos = this.pedidos.map(pedido => pedido.id === pedidoAct.id ? pedidoAct : pedido)
+      arrojarAlerta('Bien!','Pedido actualizado correctamente','info')
       this.mostrar()
     }
   
@@ -54,6 +57,10 @@ export class AdminPedidos{
         const costoTotalInd = document.createElement('P')
         costoTotalInd.classList.add("itim-regular")
         costoTotalInd.innerHTML = `<span class="font-bold uppercase">Costo Total: </span>${pedido.costoFinal}`
+
+        const regionNameInd = document.createElement('P')
+        regionNameInd.classList.add("itim-regular")
+        regionNameInd.innerHTML = `<span class="font-bold uppercase">Region: </span>${pedido.region}`
   
         //Inyectamos botones de editar y eliminar
         const btnEditar = document.createElement('button')
@@ -68,6 +75,9 @@ export class AdminPedidos{
         btnEditar.style.borderRadius = '4px';
         btnEditar.style.cursor = 'pointer';
         btnEditar.style.fontSize  = '1rem';
+        btnEditar.style.fontFamily = 'Itim';
+        btnEditar.style.fontWeight = 400;
+        btnEditar.style.fontStyle = 'normal'
         //Event handlers para debido a que todo se genera en el dom la primera vez que carga
         //Como estamos afectando y creando componentes luego de agregar pedido, no lo lee
         //Asi que no podemos usar un addeventlistener como normalmente hariamos
@@ -85,6 +95,9 @@ export class AdminPedidos{
         btnEliminar.style.borderRadius = '4px';
         btnEliminar.style.cursor = 'pointer';
         btnEliminar.style.fontSize  = '1rem';
+        btnEliminar.style.fontFamily = 'Itim';
+        btnEliminar.style.fontWeight = 400;
+        btnEliminar.style.fontStyle = 'normal'
   
         btnEliminar.onclick = () => this.eliminar(pedido.id)
   
@@ -96,6 +109,8 @@ export class AdminPedidos{
         divCita.appendChild(carreraind)
         divCita.appendChild(emailind)
         divCita.appendChild(costoTotalInd)
+        divCita.appendChild(regionNameInd)
+
         //botones
         divCita.appendChild(btnEditar)
         divCita.appendChild(btnEliminar)
