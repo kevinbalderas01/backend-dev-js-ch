@@ -44,8 +44,14 @@ export default class ProductManager{
     async insertOne(data, data_file){
         try {
             const {title, description, code, price, status, stock, category}= data;
-            const {file}= data_file;
-
+            let file;
+            if (data_file === undefined) {
+                file = null
+            } else {
+                file = data_file.file
+            }
+            console.log(file);
+            
             if (!title || !description || !code || !price || !stock || !category) {
                 throw new ErrorManager("Faltan datos obligatorios", 400)
             }
@@ -59,7 +65,7 @@ export default class ProductManager{
                 status:  status==='false' ? false : true,
                 stock: Number(stock),
                 category,
-                thumbnail: file.filename
+                thumbnail: file === null ? null : file.filename 
             }
             this.#products.push(product)
             await writeJsonFile(paths.files, this.#jsonFilename, this.#products)

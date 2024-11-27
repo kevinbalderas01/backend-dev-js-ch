@@ -1,4 +1,5 @@
-## Projecto Backend con JS - Etapa 1
+## Projecto Backend con JS
+### Etapa 1
 Se propone la creación de una API REST mediante Javascript, utilizando Node JS y Express como framework principal. Se tienen dos rutas principales formando una arquitectura de Carrito-Producto, propia de comercios electrónicos. 
 Primero veamos la estructura de las dos rutas principales:
 ### */api/products/*
@@ -46,3 +47,34 @@ Por otro lado, si intentamos eliminar otro que no está en nuestra lista de prod
 
 * POST /:cid/product/:pid Agrega un nuevo producto al carrito en cuestión, es decir, utilizando ambos ID, añade el producto con el id pid al carrito con el id de cid. Sin duda este método fue el más laborioso de implementar, porque ya afecta ambos objetos y su interacción no es tan trivial.
 ![alt text](./screenshots/13.png)
+
+
+### Etapa 2
+Se presenta la segunda etapa, implementando handlbars y websockets. Primero el home con handlebars y el template que genera el listado de los productos que se han ido almacenando
+![Inicio con handlebars](./screenshots/16.png)
+
+Luego en la ruta de */realTimeProducts* tenemos de igual manera todos los productos, pero con la posibilidad de añadir nuevos mediante un formulario, y teniendo indicadores en el caso de algún error, y botones de confirmación. Vemos que tenemos los mismos productos de la vista anterior
+![Inicio con websocket](./screenshots/17.png)
+
+Si llenamos algunos y no todos los datos, tenemos por defecto el mensaje de error y por consiguiente no se genera un nuevo producto
+![Websocket datos faltantes](./screenshots/18.png)
+
+Si ahora queremos borrar un producto ya existente basado en el ID y ponemos uno que no es válido, tenemos el siguiente error informativo
+![Websocket id no valido](./screenshots/19.png)
+
+Añadiendo nuevos datos ahora mediante websocket, vemos que se visualiza al instante y por el otro lado, si volvemos a la vista de home, tenemos que dar actualizar al botón y observamos mismos datos
+
+/realTimeProducts             |  /home
+:-------------------------:|:-------------------------:
+![](./screenshots/20.png)  |![](./screenshots/21.png)
+
+
+Ahora añadiendo hasta 10 productos, tenemos lo siguiente:
+
+/realTimeProducts             |  /home
+:-------------------------:|:-------------------------:
+![](./screenshots/22.png)  |![](./screenshots/23.png)
+
+A su vez, vemos que se almacena correctamante la información en el FileStorage. Con el thumbail como null como es correspondiente a esta entrega.
+![JSON final](./screenshots/24.png)
+
