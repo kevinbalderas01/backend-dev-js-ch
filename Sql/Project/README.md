@@ -166,3 +166,55 @@ Tabla 16 - Envio-Centro-recepción
 | - | `fecha_recibo` | Fecha de recibo  | TIMESTAMP
 | - | `fecha_salida` | Fecha de salida| TIMESTAMP
 
+
+## Segunda Fase
+Se adjunta la imagen donde se muestra la correcta creación de tablas en MYSQL Workbench.
+![Creación](../imgs/create.png)
+
+Ahora cuando se hace la inserción por medio de comandos *insert* para validar tanto relaciones hechas en la primera fase como para reforzar la inserción normal a tablas.
+![Insert](../imgs/insert_1.png)
+
+
+* VISTAS
+    De manera general, se comprueba su correcta implementación mediante el archivo [01_views.sql](./objetos/01_views.sql).
+    ![Creación](../imgs/view_1.png)
+
+    * vw_ventas_por_periodo : Para saber las ventas por periodo (mes) y tener una distribución a lo largo de pasado un año y evaluar desempeño general. Esta vista tiene la flexibilidad de hacerse por año o día también, sólo modificando una pequeña condición.
+    * vw_top3_categorias_prod: Porque al ser una pequela/mediana empresa planeamos meterle publicidad sólo a los top3 categorías,cuando hallamos crecido le daremos mayor visibilidad a futuros productos.
+
+
+vw_ventas_por_periodo        |  vw_top3_categorias_prod
+:-------------------------:|:-------------------------:
+![](../imgs//view_2.png)  |![](../imgs/view_3.png)
+
+* FUNCIONES
+    Archivo que genera funciones se encuentra en [02_functions.sql](./objetos/02_functions.sql)
+    * fx_mayor_edad: Para saber cupantos clientes o registrados en nuestra plataforma tienen mayoría de edad y decidir cómo proceder en caso de tener casos donde no se cumpla dicha mayoría de edad.
+
+    * fx_obtener_lada: Obtener la lada nos dará más oportunidad de entender reglas de negocio o publicidad sobre los celulares, teniendo la lada, tendremos también oportunidad de recomendar productos que sean compatibles con dicha lada, tecnología, planes de pago y saldo telefónico, etc.
+
+fx_mayor_edad        |  fx_obtener_lada
+:-------------------------:|:-------------------------:
+![](../imgs/func_2.png)  |![](../imgs/func_1.png)
+
+* STORED PROCEDURES
+    El archivo que genera los stored procedures se encuentra en [03_procedures.sql](./objetos/03_procedures.sql) . Cabe resaltar que gracias a la modularidad de los procedimientos, pudimos utilizar las funciones para no tener que trabajar doble.
+
+    * sp_envio_diff: Este procedimiento se utiliza para saber detalles temporales, en minutos, horas y días sobre los días de entrega y de salida de los envios. Y así tener una mejor estimación y mayor nivel de precisión en las predicciones de entrega que se muestran en nuestro sitio web.
+    ![Procedimientos](../imgs/sp_1.png)
+    * sp_clientes_no_mayores: Este procedimiento se utiliza para saber qué clientes no son mayores de edad, principalmenten nos auxiliamos de la función creada anteriormente en el apartado de funciones para la creación de este stored procedure que creará una nueva tabla con esa información y así saber qué postura tomar en caso de que tengamos un cliente que haya hecho un pedido siendo menor de edad, lo cuál hará más eficaz y de mejor atención nuestro servicio al cliente.
+    ![Procedimientos](../imgs/sp_2.png)
+
+* TRIGGERS
+    Del lado izquierdo se pueden apreciar los triggers añadidos y los resultados en la consola, indicando tanto correcta cración, como nueva adición y mensaje de error en caso de no pasar la condición dada por *tg_validar_cliente_telefono* , derivado del archivo [04_triggers.sql](./objetos/04_triggers.sql).
+    ![Triggers](../imgs/trigger_1.png)
+
+    * tg_agregar_nuevo_cliente : Se insertan registros en otra tabla creada, basado en si hay nuevos clientes o no. Ya que existe un cliente molesto que siempre pregunta cuántos clientes nuevos hay desde la última vez que nos vemos, entonces a manera de backup temporal, cada vez que tenemos esa situación, corremos el trigger y en la tabla final tenemos ese temporal. 
+
+    * tg_validar_cliente_telefono : Se utiliza una expresión regular para validar número de telefono, de 10 digitos solo y sólo números, no letras o cosas raras
+
+Comparación final entre ambos triggers así como su resultado.
+tg_agregar_nuevo_cliente        |  tg_validar_cliente_telefono
+:-------------------------:|:-------------------------:
+![](../imgs//trigger_2.png)  |![](../imgs/trigger_3.png)
+

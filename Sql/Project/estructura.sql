@@ -101,7 +101,14 @@ CREATE TABLE clientes(
     telefono VARCHAR(20),
     calle VARCHAR(40),
     correo VARCHAR(200) UNIQUE,
-    fecha_alta DATETIME DEFAULT (CURRENT_TIMESTAMP)
+    fecha_nacimiento DATETIME DEFAULT (CURRENT_TIMESTAMP)
+);
+
+CREATE TABLE nuevos_clientes(
+    id_nuevo_cliente INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(20),
+    apellido VARCHAR(40),
+    telefono VARCHAR(20)
 );
 
 CREATE TABLE pedidos(
@@ -128,12 +135,11 @@ CREATE TABLE centros_recepcion(
 
 CREATE TABLE envios (
     id_envios INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    id_pedidos INT,
     fecha_envio DATETIME,
     fecha_entrega DATETIME
 );
 
--- REFERENCIAS
+-- FOREIGN KEYS
 
 ALTER TABLE clientes 
 ADD CONSTRAINT fk_constraint_id_datos_ubicacion_clientes 
@@ -162,10 +168,6 @@ FOREIGN KEY(id_metodos_pago) REFERENCES metodos_pago(id_metodos_pago);
 ALTER TABLE pedidos 
 ADD CONSTRAINT fk_constraint_id_envios
 FOREIGN KEY(id_envios) REFERENCES envios(id_envios);
-
-ALTER TABLE envios 
-ADD CONSTRAINT fk_constraint_id_pedidos
-FOREIGN KEY(id_pedidos) REFERENCES pedidos(id_pedidos);
 
 ALTER TABLE centros_recepcion 
 ADD CONSTRAINT fk_constraint_id_datos_ubicacion_centros_recepcion
