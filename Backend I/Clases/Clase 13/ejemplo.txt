@@ -1,0 +1,23 @@
+use baseCRUD
+
+db.createCollection("mascotas")
+
+db.mascotas.insertMany([{nombre:"Joki", specie:"mamifero", edad:15},
+{nombre:"Jake", specie:"omnivoro", edad:5},
+{nombre:"Kevin", specie:"humano", edad:1}])
+
+
+db.mascotas.find({specie:"humano"})
+
+
+db.mascotas.countDocuments()
+
+db.mascotas.find({ $and: [{sexo:"M"},{edad:25}]})
+
+db.mascotas.find({edad:{$gte:24}})
+
+db.mascotas.find().sort({nombre:1})
+
+db.mascotas.find().sort({nombre:1}).limit(2)
+
+db.mascotas.find({sexo:"M"}, {nombre})

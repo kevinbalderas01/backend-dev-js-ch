@@ -1,0 +1,112 @@
+[
+	{
+		"id": 3,
+		"title": "Mesa",
+		"description": "Para decoracion",
+		"code": "dedouneudnuendeund",
+		"price": 50,
+		"status": false,
+		"stock": 4,
+		"category": "Muebles",
+		"thumbnail": "file_2734_11112024_154132.jpg"
+	},
+	{
+		"id": 4,
+		"title": "Mesa",
+		"description": "Para decoracion",
+		"code": "dedouneudnuendeund",
+		"price": 50,
+		"status": true,
+		"stock": 4,
+		"category": "Muebles",
+		"thumbnail": "file_7576_11112024_154446.jpg"
+	},
+	{
+		"id": 5,
+		"title": "Cafetera Cara",
+		"description": "Esta es una buena cafetera",
+		"code": "f8cd45er74",
+		"price": 25,
+		"status": true,
+		"stock": 200,
+		"category": "Domesticos",
+		"thumbnail": null
+	},
+	{
+		"id": 6,
+		"title": "Vaso de cristal",
+		"description": "Este es un vaso muy caro",
+		"code": "d9e85r46de",
+		"price": 12,
+		"status": false,
+		"stock": 32,
+		"category": "Domesticos",
+		"thumbnail": null
+	},
+	{
+		"id": 7,
+		"title": "Silla",
+		"description": "Esta es una silla de madera",
+		"code": "d98e7r5f45d874e",
+		"price": 56,
+		"status": true,
+		"stock": 2,
+		"category": "Muebleria",
+		"thumbnail": null
+	},
+	{
+		"id": 8,
+		"title": "Balon",
+		"description": "Este es el balon del mundial Qatar 2022",
+		"code": "5d47er8f5e54f87e8",
+		"price": 99,
+		"status": false,
+		"stock": 1,
+		"category": "Entretenimiento",
+		"thumbnail": null
+	},
+	{
+		"id": 9,
+		"title": "Playera",
+		"description": "Esta es la playera de Lio Messi",
+		"code": "d654d7e8r4ed5e4de",
+		"price": 33,
+		"status": true,
+		"stock": 10,
+		"category": "Ropa",
+		"thumbnail": null
+	},
+	{
+		"id": 10,
+		"title": "Audifonos",
+		"description": "audifonos que anulan ruido exterior",
+		"code": "55555",
+		"price": 9,
+		"status": true,
+		"stock": 99,
+		"category": "Entretenimiento",
+		"thumbnail": null
+	},
+	{
+		"id": 11,
+		"title": "Libro",
+		"description": "Este libro es bueno para aprender Node JS",
+		"code": "d87ede4d6ed4e",
+		"price": 22,
+		"status": true,
+		"stock": 22,
+		"category": "Conocimiento",
+		"thumbnail": null
+	},
+	{
+		"id": 12,
+		"title": "Laptop",
+		"description": "Esta laptop tiene GPU integrada y es potentisima",
+		"code": "d7d45e4de5f8e",
+		"price": 299,
+		"status": true,
+		"stock": 3,
+		"category": "Tecnologia",
+		"thumbnail": null
+	}
+]
