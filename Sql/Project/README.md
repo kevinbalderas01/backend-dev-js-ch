@@ -1,9 +1,11 @@
 # Projecto SQL - KEBACommerce
 
-## Primera Fase
 
 #### Descripción
 En esta fase, se propone la creación de un ecommerce propio llamado KEBACommerce, donde se propone tener acciones como hacer pedidos en una página en linea, pero teniendo también datos importantes detrás como del vendedor en cuestion, los centros de distribución y envios, asi como productos también . Este proyecto propone resolver la problemática de la realización de una empresa que quiero hacer en el futuro, un ecommerce, lo cual planeo hacer en un tiempo no mayor a 10 años, limitando mi nicho de mercado pero dandome una idea clara de lo que implicaria a nivel de modelo de datos
+
+#### Problemática 
+El modelo de datos presentado buscará dar solución al proyecto de tener un ecommerce, desde el sitio donde se hacen pedidos, hasta los registros en computadoras de distribuidores, todo se relaciona mediante el presente modelo de datos. Tenemos pedidos, clientes, ciudades con direcciones, distribuidores y direcciones, todo para que en el momento de cuando se tenga una página web, se haga un pedidio, se procese en un backend que le pegue al modelo de datos proporcionado en este proyecto. Básicamente es el corazon de los datos de los proeyctos de ecommerce que encontramos tipicamente en internet. Asi mismo, una vez cumplido su fin de hacer las transacciones de pedidios, también en tableros de visualización de BI podemos obtener información a gente de negocio que tome decisiones basadas en datos, contarles una historia de nuestros datos también es posible con este modelo de datos.
 
 #### Primer Boceto
 Se presenta el primer boceto, identificando actores, relaciones y acciones principales , donde destacan:
@@ -17,7 +19,7 @@ Se presenta el primer boceto, identificando actores, relaciones y acciones princ
 ![Boceto Inicial](./primer_boceto.png)
 
 #### Diagrama Entidad Relación (Workbench)
-Con la ayuda del [script](./project.sql) se realizó el siguiente diagrama entidad relación en MySQL Workbench
+Con la ayuda del [script para estructura](./estructura.sql) se realizó el siguiente diagrama entidad relación en MySQL Workbench
 ![DER Workbench](./der.png)
 A continuación se presentan las tablas y una breve descripción de los campos:
 Tabla 1 - Clientes
@@ -167,8 +169,17 @@ Tabla 16 - Envio-Centro-recepción
 | - | `fecha_salida` | Fecha de salida| TIMESTAMP
 
 
-## Segunda Fase
-Se adjunta la imagen donde se muestra la correcta creación de tablas en MYSQL Workbench.
+Tabla 17 - Nuevos clientes (Auditoría)
+| Llave | Nombre | Apellido | Telefono |
+| --- | --- | --- | --- |
+| PK | `id_nuevo_cliente` | Identificador de nuevos clientes | INT
+| - | `nombre` | Nombre de nuevos clientes | VARCHAR
+| - | `apellido` | Apellido de nuevos clientes | VARCHAR
+| - | `telefono` | Telefono de nuevos clientes  | VARCHAR
+
+
+## Inserción y objetos
+Se adjunta la imagen donde se muestra la correcta creación de tablas en MYSQL Workbench. Asi mismo, con la ayuda del [script para popular](./estructura.sql). 
 ![Creación](../imgs/create.png)
 
 Ahora cuando se hace la inserción por medio de comandos *insert* para validar tanto relaciones hechas en la primera fase como para reforzar la inserción normal a tablas.
@@ -218,3 +229,20 @@ tg_agregar_nuevo_cliente        |  tg_validar_cliente_telefono
 :-------------------------:|:-------------------------:
 ![](../imgs//trigger_2.png)  |![](../imgs/trigger_3.png)
 
+### Permisos y Privilegios
+Para la parte de permisos y usuarios se utilizó el [archivo](./permissions/05_privileges.sql). Donde básicamente se tuvieron 3 usuarios, uno como administrador con permisos completos y también que pueda modificar permisos, luego uno a manera de auditoria con permisos solo de lectura, sin que este usuario pueda modficiar permisos. Por último, otro que tiene únicamente alcance para la tabla de pedidos, con escritura, lectura y actualización de registros. En la siguiente imagen se muestra parte del código SQL utilizado y en la parte inferior la execución exitosa:
+![Grant](../imgs/grants_1.png)
+
+Aquí verificamos los permisos a cada usuario, donde ya se puede apreciar el efecto de cada política de escritura o lectura utilizada para cada usuario(tres en nuestro caso)
+![Grant 2](../imgs/grants_2.png)
+
+### Resguardo (back up)
+Mediante MySQL Workbench hacemos un back up, en donde seleccionamos las características de exportación
+![Back up](../imgs/backup_1.png)
+Y se muestra con éxito la generación del archivo para [back up](./backups/Dump20241226.sql).
+![Back up 2](../imgs/backup_2.png)
+
+
+
+## Conclusión
+El presente proyecto permite dar respuesta el modelo de negocio de un ecommerce traducido en un modelo de datos , completo y complejo, con varias tablas que se relacionan entre sí, donde cada pedido se puede obtener a diferentes niveles de detalles, por ejemplo si solo quisiéramos tener una tabla de pedidos, o si queremos hacer un cruce con clientes-pedidos o entre clientes-pedidos-envios para obtener la información requerida para diversos fines. A su vez se implementaron funciones, prcedimientos almacenados para cálculos más complejos en caso de estar interesados en dar métricas a los encargados de negocio, a alto nivel. También tenemos views que tienen información indispensable para cada fin determinado, de donde podemos darnos una idea de cómo sería un DataMart para entregar información a diferentes departamentos en caso de ser necesario. Por último, pero no menos importantes tenemos privilegios y resguardos en caso de que necesitemos administrar todo el modelo de datos para diferentes personas, y así seguir el principio de "least privilege" y así obtener un modelo y arquitectura de datos completo que da respuesta a un problema real.

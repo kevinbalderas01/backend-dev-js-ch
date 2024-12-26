@@ -17,9 +17,7 @@ DELIMITER ;
 INSERT INTO clientes (id_datos_ubicacion_clientes, id_metodos_pago, nombre, apellido, telefono, calle, correo, fecha_nacimiento) VALUES
     (4, 2, 'Kevin', 'Balderas', '42-2341-0689', 'La Real Joya', 'kevin.martinez@email.com', '1998-12-19 11:00:00');
 
-INSERT INTO clientes (id_datos_ubicacion_clientes, id_metodos_pago, nombre, apellido, telefono, calle, correo, fecha_nacimiento) VALUES
-    (4, 2, 'Juanin', 'Sanchez', '42-2341-0r689', 'La Real Joya', 'kevin.martinez@email.com', '1998-12-19 11:00:00');
-       
+    
 -- Trigger para auditar nuevos clientes agregados
 DROP TRIGGER IF EXISTS kebacommerce.tg_agregar_nuevo_cliente ;
 CREATE TRIGGER kebacommerce.tg_agregar_nuevo_cliente
