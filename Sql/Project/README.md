@@ -179,7 +179,7 @@ Tabla 17 - Nuevos clientes (Auditoría)
 
 
 ## Inserción y objetos
-Se adjunta la imagen donde se muestra la correcta creación de tablas en MYSQL Workbench. Asi mismo, con la ayuda del [script para popular](./estructura.sql). 
+Se adjunta la imagen donde se muestra la correcta creación de tablas en MYSQL Workbench. Asi mismo, con la ayuda del [script para popular](./population.sql). 
 ![Creación](../imgs/create.png)
 
 Ahora cuando se hace la inserción por medio de comandos *insert* para validar tanto relaciones hechas en la primera fase como para reforzar la inserción normal a tablas.
